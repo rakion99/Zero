@@ -836,7 +836,7 @@ void DoLuaCommand3(std::string Cmd) {
 		try {
 			if (In.at(1) == "me") {
 				string string;
-				for (int i = 1; i < In.size(); i++) {
+				for (size_t i = 1; i < In.size(); i++) {
 					if (i < (In.size() - 2)) {
 						string.append(In.at(i) + ' ');
 					}
@@ -856,7 +856,7 @@ void DoLuaCommand3(std::string Cmd) {
 
 				int Character = GetCharacter(In.at(1));
 				string string;
-				for (int i = 1; i < In.size(); i++) {
+				for (size_t i = 1; i < In.size(); i++) {
 					if (i < (In.size() - 2)) {
 						string.append(In.at(i) + ' ');
 					}
@@ -2982,7 +2982,7 @@ void DoLuaCommand(std::string Cmd) {
 		try {
 			if (In.at(1) == "me") {
 				string string;
-				for (int i = 1; i < In.size(); i++) {
+				for (size_t i = 1; i < In.size(); i++) {
 					if (i < (In.size() - 1)) {
 						string.append(In.at(i) + ' ');
 					}
@@ -3009,7 +3009,7 @@ void DoLuaCommand(std::string Cmd) {
 				int Character = GetCharacter(In.at(1));
 				std::string PlayerName = *GetName(Character);
 				string string;
-				for (int i = 1; i < In.size(); i++) {
+				for (size_t i = 1; i < In.size(); i++) {
 					if (i < (In.size() - 1)) {
 						string.append(In.at(i) + ' ');
 					}
@@ -3735,7 +3735,7 @@ void DoLuaCommand(std::string Cmd) {
 	else if (In.at(0) == "newteam") {
 		try {
 			string string;
-			for (int i = 1; i < In.size(); i++) {
+			for (size_t i = 1; i < In.size(); i++) {
 				if (i < (In.size() - 1)) {
 					string.append(In.at(i) + ' ');
 				}
@@ -5393,7 +5393,7 @@ void DoLuaCommand(std::string Cmd) {
 	else if (In.at(0) == "print") {
 		try {
 			string string;
-			for (int i = 1; i < In.size(); i++) {
+			for (size_t i = 1; i < In.size(); i++) {
 				if (i < (In.size() - 1)) {
 					string.append(In.at(i) + ' ');
 				}
@@ -5411,7 +5411,7 @@ void DoLuaCommand(std::string Cmd) {
 	else if (In.at(0) == "warn") {
 		try {
 			string string;
-			for (int i = 1; i < In.size(); i++) {
+			for (size_t i = 1; i < In.size(); i++) {
 				if (i < (In.size() - 1)) {
 					string.append(In.at(i) + ' ');
 				}
@@ -5687,7 +5687,7 @@ Ret();
 
 void Init() {
 	//VMProtectBeginVirtualization("Main");
-	DWORD OldPerm, OldPermMsg, Base;
+	DWORD OldPerm;
 
 	VirtualProtect(&FreeConsole, 1, PAGE_EXECUTE_READWRITE, &OldPerm);
 	VirtualProtect(&MessageBoxA, 5, PAGE_EXECUTE_READWRITE, &OldPerm);
