@@ -235,7 +235,7 @@ void RunFogBypass() {
 
 
 typedef int*(__cdecl *GetContextLevel)();
-GetContextLevel ContextLevel = (GetContextLevel)getaddy(0x596b90);
+GetContextLevel ContextLevel = (GetContextLevel)getaddy(0x598950);
 
 int *ChangeContextLevel() {
 	int *Level = ContextLevel();
