@@ -251,7 +251,7 @@ void ChangeChar(std::string plr, std::string id)
 	lua_getfield(lua_State, -1, "Players");
 	lua_getfield(lua_State, -1, plr.c_str());
 	lua_pushstring(lua_State, idxd.c_str());
-	lua_setfield(lua_State, -2, "CharacterAppearance");
+	lua_setfield(lua_State, -2, "CharacterAppearanceId");
 	lua_pcall(lua_State, 1, 0, 0);
 	lua_getglobal(lua_State, "game");
 	lua_getfield(lua_State, -1, "Players");
