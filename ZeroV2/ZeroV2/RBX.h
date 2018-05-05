@@ -235,7 +235,7 @@ void RunFogBypass() {
 
 
 typedef int*(__cdecl *GetContextLevel)();
-GetContextLevel ContextLevel = (GetContextLevel)getaddy(0x598950);
+GetContextLevel ContextLevel = (GetContextLevel)getaddy(0x597da0);
 
 int *ChangeContextLevel() {
 	int *Level = ContextLevel();
@@ -246,6 +246,6 @@ int *ChangeContextLevel() {
 }
 
 int GetFilteringEnabled(int Workspace) {
-	return *(BYTE*)(Workspace + 603);
+	return *(BYTE*)(Workspace + 619);
 }
 

@@ -347,7 +347,7 @@ void Scan() {
 	std::cout << "Scanning.. ";
 	try {
 		//DWORD DataModelA = getaddy(0x6d6f4e);
-		DWORD ScriptContextVFTable = *(DWORD*)((getaddy(0x6b9e0e)) + 0x02);
+		DWORD ScriptContextVFTable = *(DWORD*)((getaddy(0x6b802e)) + 0x02);
 		ScriptContext = Memory::Scan((char*)&ScriptContextVFTable);
 		DataModel = GetParent(ScriptContext);
 		Workspace = FindFirstClass(DataModel, "Workspace");
@@ -355,7 +355,7 @@ void Scan() {
 		Players = FindFirstClass(DataModel, "Players");
 		CurrentPlayer = GetLocalPlayer(Players);
 		PlayerName = GetName(CurrentPlayer);
-		lua_State = ScriptContext + 0xDC + *(DWORD*)(ScriptContext + 0xDC);
+		lua_State = (ScriptContext + 0xDC) ^ *(DWORD*)(ScriptContext + 0xDC);
 		CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)Loop, NULL, NULL, NULL);
 
 		std::cout << blue << "Success." << std::endl;
@@ -5647,7 +5647,7 @@ void HotKeys_Loop() {
 void DoCommands(std::string Command) {
 	try {
 		auto Context = (int*(__cdecl*)
-			())getaddy(0x598950);
+			())getaddy(0x597da0);
 		*(int*)Context() = 6;
 		DoConsoleCommands(Command);
 		DoLuaCommand(Command);
