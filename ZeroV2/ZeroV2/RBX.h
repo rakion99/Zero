@@ -92,7 +92,7 @@ int GetService(const char* Name) {
 
 std::string* GetName(int Instance) {
 	try {
-		return (std::string*)(*(int*)(Instance + 0x28));
+		return (std::string*)(*(int*)(Instance + 40));
 	}
 	catch (...) {
 		printf("Couldn't get Name!");
@@ -235,7 +235,7 @@ void RunFogBypass() {
 
 
 typedef int*(__cdecl *GetContextLevel)();
-GetContextLevel ContextLevel = (GetContextLevel)getaddy(0x597da0);
+GetContextLevel ContextLevel = (GetContextLevel)getaddy(0x59a8c0);
 
 int *ChangeContextLevel() {
 	int *Level = ContextLevel();

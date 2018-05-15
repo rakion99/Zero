@@ -137,30 +137,30 @@ DWORD SigScan(const char *AoB, char *Mask) {
 
 #define lua_pop(L,n)				 lua_settop(L, -(n)-1)
 
-typedef void(__cdecl *Lua_getfield)(int lua_State, int idx, const char *k);
-Lua_getfield lua_getfield = (Lua_getfield)unprotect(getaddy(0x73E630));
+typedef void(__stdcall *Lua_getfield)(int lua_State, int idx, const char *k);
+Lua_getfield lua_getfield = (Lua_getfield)unprotect(getaddy(0x73DB40));
 typedef int(__cdecl *Lua_pcall)(int lua_State, int naArgs, int nresults, int errfunc);
-Lua_pcall lua_pcall2 = (Lua_pcall)unprotect(getaddy(0x73F3E0));
-typedef void(__stdcall *Lua_setfield)(int lua_State, int idx, const char *k);
-Lua_setfield lua_setfield2 = (Lua_setfield)unprotect(getaddy(0x740350));
-typedef void(__fastcall *Lua_pushstring)(int lua_State, const char *s);
-Lua_pushstring lua_pushstring = (Lua_pushstring)getaddy(0x73F990);
-typedef void(__cdecl *Lua_pushvalue)(int lua_State, int idx);
-Lua_pushvalue lua_pushvalue = (Lua_pushvalue)unprotect(getaddy(0x73FA40));
+Lua_pcall lua_pcall2 = (Lua_pcall)unprotect(getaddy(0x73e910));
+typedef void(__fastcall *Lua_setfield)(int lua_State, int idx, const char *k);
+Lua_setfield lua_setfield2 = (Lua_setfield)unprotect(getaddy(0x73F8E0));
+typedef void(__cdecl *Lua_pushstring)(int lua_State, const char *s);
+Lua_pushstring lua_pushstring = (Lua_pushstring)getaddy(0x73EEE0);
+typedef void(__fastcall *Lua_pushvalue)(int lua_State, int idx);
+Lua_pushvalue lua_pushvalue = (Lua_pushvalue)unprotect(getaddy(0x73EFD0));
 typedef void(__cdecl *Lua_settop)(int lua_State, int n);
-Lua_settop lua_settop = (Lua_settop)unprotect(getaddy(0x740720));
-typedef void(__thiscall *Lua_pushnumber)(int lua_State, double number);
-Lua_pushnumber lua_pushnumber = (Lua_pushnumber)unprotect(getaddy(0x73F900));
-typedef int(__fastcall *Lua_getmetatable)(int lua_State, int idx);
-Lua_getmetatable lua_getmetatable = (Lua_getmetatable)unprotect(getaddy(0x73E8F0));
+Lua_settop lua_settop = (Lua_settop)unprotect(getaddy(0x73fcc0));
+typedef void(__stdcall *Lua_pushnumber)(int lua_State, double number);
+Lua_pushnumber lua_pushnumber = (Lua_pushnumber)unprotect(getaddy(0x73EE50));
+typedef int(__cdecl *Lua_getmetatable)(int lua_State, int idx);
+Lua_getmetatable lua_getmetatable = (Lua_getmetatable)unprotect(getaddy(0x73DE10));
 
 
 void lua_pcall(int lst, int nargs, int nresults, int errfunc) {
 	//Bypass RawrCheck(?)
-	WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(getaddy(0x737797)), "\xEB", 1, 0);
+	WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(getaddy(0x736cc7)), "\xEB", 1, 0);
 	lua_pcall2(lst, nargs, nresults, errfunc);
 	//Restore RawrCheck(?)
-	WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(getaddy(0x737797)), "\x74", 1, 0);
+	WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(getaddy(0x736cc7)), "\x74", 1, 0);
 }
 
 void lua_setfield(int lua_State, int idx, const char *k)
